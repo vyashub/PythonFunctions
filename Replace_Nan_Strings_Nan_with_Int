@@ -1,0 +1,3 @@
+def rep_fill_na_int(df,col,val):
+    df[col].replace(' ', val, inplace=True)
+    df[col] = df[col].astype(int)
