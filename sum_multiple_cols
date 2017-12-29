@@ -1,0 +1,13 @@
+age_cols = []
+
+for col in rec_aug_df.columns:
+    if col.startswith('AGE_R'):
+        age_cols.append(col)
+        
+for col in age_cols:
+    col_num = col.split('_')[-1]
+    rec_aug_df['KID_'+col_num]=np.where((rec_aug_df[col] >= 1) & 
+                                       (rec_aug_df[col] <= 4),1,0)     
+
+rec_aug_df['kids'] = 1
+rec_aug_df.loc[(rec_aug_df.loc[:,'KID_R1':'KID_R14'].sum(axis=1) == 0),'kids'] = 2
