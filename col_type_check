@@ -1,0 +1,11 @@
+obj_list1 = []
+obj_col_list1= []
+int_list1 = []
+int_col_list1 = []
+for col in es_feb_df.columns:
+    if es_feb_df[col].dtype == 'int64':
+        int_list1.append(es_feb_df[col].dtype)
+        int_col_list1.append(col)
+    else:
+        obj_list1.append(es_feb_df[col].dtype)
+        obj_col_list1.append(col)
