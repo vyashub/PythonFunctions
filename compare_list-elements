@@ -1,0 +1,35 @@
+import pandas as pd
+my_df = pd.read_csv('es_feb_df_after_stage_0_0.csv',low_memory=False,skipinitialspace=True,encoding='ISO-8859-1')
+spss_df = pd.read_csv('Workingfile Feb 17_0.csv',low_memory=False,skipinitialspace=True,encoding='ISO-8859-1')
+print('My df Shape: ',my_df.shape)
+print('SPSS df Shape: ',spss_df.shape)
+my_df_int_col = []
+other_col = []
+col_type = []
+for col in my_df.columns:
+    col_type.append(my_df[col].dtype)
+    if my_df[col].dtype== 'int64' or my_df[col].dtype== 'float64':
+        #print(col)
+        my_df_int_col.append(col)
+    else:
+        other_col.append(col)
+my_int_col_sum = []
+for col in my_df_int_col:
+    my_int_col_sum.append(my_df[col].sum(axis=0))
+    
+    
+spss_df_int_col = []
+spss_other_col = []
+spss_col_type = []
+for col in spss_df.columns:
+    spss_col_type.append(spss_df[col].dtype)
+    if spss_df[col].dtype== 'int64' or spss_df[col].dtype== 'float64':
+        #print(col)
+        spss_df_int_col.append(col)
+    else:
+        spss_other_col.append(col)
+spss_int_col_sum = []
+for col in spss_df_int_col:
+    spss_int_col_sum.append(spss_df[col].sum(axis=0))
+    
+[my_int_col_sum.index(i) for i, j in zip(my_int_col_sum, spss_int_col_sum) if i != j]
