@@ -1,0 +1,20 @@
+# Import libraries
+import pandas as pd
+
+#path=r'C:\Users\vysh7001\Documents\Shub_Work\IrelandUE\jan_2018\Jan18\Input'
+path = input('Please enter path: ')
+
+os.chdir(path)
+
+# Create a folder 'Input' and keep all the input files in it
+#inpath= path + '\\Input\\'
+print('Current path is:',path)
+
+file_name = 'Final Workingfile Feb 17.csv'
+file_name = input('Please enter final working file name for Feb: ')
+print('Entered file name is: ',file_name)
+
+# feb_df=pd.read_csv(path+"Final Workingfile Feb 17.csv",low_memory=False)
+feb_df=pd.read_csv(path + '\\' + file_name,low_memory=False)
+
+feb_df.shape
